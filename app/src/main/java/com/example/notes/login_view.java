@@ -27,8 +27,6 @@ public class login_view extends Fragment {
     private EditText username_EdidText, password_EditText;
     MainActivity activity;
 
-    //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

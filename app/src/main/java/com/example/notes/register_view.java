@@ -59,6 +59,6 @@ public class register_view extends Fragment {
         return view;
     }
     boolean check_if_correct_input(String text){
-        return true;
+        return text.length() >= 3 && text.length() <= 20;
     }
 }
