@@ -45,7 +45,7 @@ public class register_view extends Fragment {
                     usersOpenHelper users_helper = new usersOpenHelper(requireContext());
                     SQLiteDatabase db = users_helper.getWritableDatabase();
                     MainActivity activity = (MainActivity) getActivity();
-                    activity.addUser(db,username,password,1);
+                    activity.addUser(db,username,activity.hash_password(password),1);
                     activity.switchLogin();
                 }
                 else {

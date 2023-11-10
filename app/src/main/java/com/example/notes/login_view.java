@@ -42,10 +42,10 @@ public class login_view extends Fragment {
 
         usersOpenHelper users_helper = new usersOpenHelper(requireContext()); // Użyj requireContext() zamiast "this"
         SQLiteDatabase db = users_helper.getWritableDatabase();
-        activity.addUser(db, "Benedek", hash_password("admin"), 2);
-        activity.addUser(db, "Smiljana", hash_password("admin"), 2);
-        activity.addUser(db, "Adrian", hash_password("admin"), 2);
-        activity.addUser(db, "nasa42", hash_password("user"), 1);
+        activity.addUser(db, "Benedek", activity.hash_password("admin"), 2);
+        activity.addUser(db, "Smiljana", activity.hash_password("admin"), 2);
+        activity.addUser(db, "Adrian", activity.hash_password("admin"), 2);
+        activity.addUser(db, "nasa42", activity.hash_password("user"), 1);
         db.close();
 
         Button btn_login = view.findViewById(R.id.btn_login);
@@ -57,8 +57,9 @@ public class login_view extends Fragment {
 
                 usersOpenHelper users_helper = new usersOpenHelper(requireContext());
                 SQLiteDatabase db = users_helper.getWritableDatabase();
+                String password_hashed = activity.hash_password(password);
                 Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE user = ?", new String[]{username.toLowerCase()});
-                if (cursor.moveToFirst() && password.equals(hash_password(cursor.getString(cursor.getColumnIndex("password"))))) {
+                if (cursor.moveToFirst() && password_hashed.equals(cursor.getString(cursor.getColumnIndex("password")))) {
                     loginDialog_TextView.setText("Sucess");
                     loginDialog_TextView.setTextColor(Color.WHITE);
                     activity.switchToNoteViewerNoArgs();
@@ -78,12 +79,6 @@ public class login_view extends Fragment {
 
         });
         return view;
-    }
-
-
-
-    private String hash_password(String password){
-        return password;//encoder.encode(password);
     }
 
 }

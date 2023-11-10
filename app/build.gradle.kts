@@ -29,7 +29,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.opencsv:opencsv:5.5")
     implementation("com.google.android.material:material:1.10.0")

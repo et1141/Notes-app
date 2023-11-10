@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -155,6 +156,16 @@ public class MainActivity extends AppCompatActivity {
         values.put("password", password.toLowerCase());
         values.put("permission", permission);
         db.insert("Users", null, values);
+    }
+    public String hash_password(String password) {
+        try {
+            return EncryptionManager.toHexString(EncryptionManager.getSHA(password));//encoder.encode(password);
+            }
+        catch (NoSuchAlgorithmException e)
+        {
+            System.out.println("Exception thrown for incorrect algorithm: " + e);
+        }
+        return "";
     }
 
     public void clearSearch(View view) {
