@@ -6,6 +6,7 @@
     <string name="login_btn"><b>Login</b></string>
     <string name="register_btn"><b>Register</b></string>
     <string name="or_txt"><b>or</b></string>
+    <string name="back_btn">Back</string>
 
 
 </resources>

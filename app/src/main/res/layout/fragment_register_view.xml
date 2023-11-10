@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".register_view">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="52dp"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:textColor="@color/main_txt"
+        ></TextView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="  username"
+        android:layout_marginTop="42dp"
+        android:width="120dp"
+        android:drawableStart="@drawable/user_icon"
+        android:id="@+id/username_txt">
+    </EditText>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint=" password"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/password_icon"
+        android:width="120dp"
+        android:id="@+id/password_txt">
+
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_information">
+    </TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="@string/register_btn"
+        android:width="110dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/register_btn">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="@string/back_btn"
+        android:width="110dp"
+        android:id="@+id/back_btn">
+    </Button>
+
+</LinearLayout>

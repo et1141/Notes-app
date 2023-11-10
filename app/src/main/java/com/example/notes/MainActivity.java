@@ -1,6 +1,8 @@
 package com.example.notes;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,10 +25,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
+    MainActivity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         String fileName = "cache5.csv"; // Replace with the desired file name
@@ -101,10 +104,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchToAddNote() {
         NewNote noteFragment = new NewNote();
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_view, noteFragment); // R.id.fragment_container is a placeholder in your layout where the fragment will be displayed
         transaction.addToBackStack(null); // Allow back navigation
+        transaction.commit();
+    }
+    public void switchRegister() {
+        register_view register_view = new register_view();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_view, register_view); // R.id.fragment_container is a placeholder in your layout where the fragment will be displayed
+        //  transaction.addToBackStack(null); // Allow back navigation
+        transaction.commit();
+    }
+    public void switchLogin() {
+        login_view login_view = new login_view();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_view, login_view); // R.id.fragment_container is a placeholder in your layout where the fragment will be displayed
+        //  transaction.addToBackStack(null); // Allow back navigation
         transaction.commit();
     }
 
@@ -133,9 +149,17 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
     }
+    public void addUser(SQLiteDatabase db, String username, String password, int permission) {
+        ContentValues values = new ContentValues();
+        values.put("user", username.toLowerCase());
+        values.put("password", password.toLowerCase());
+        values.put("permission", permission);
+        db.insert("Users", null, values);
+    }
 
     public void clearSearch(View view) {
        switchToNoteViewerNoArgs();
     }
+
 
 }
