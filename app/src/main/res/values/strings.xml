@@ -3,6 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="clearSearch"><b>Clear search</b></string>
+    <string name="login_btn"><b>Login</b></string>
+    <string name="register_btn"><b>Register</b></string>
+    <string name="or_txt"><b>or</b></string>
 
 
 </resources>

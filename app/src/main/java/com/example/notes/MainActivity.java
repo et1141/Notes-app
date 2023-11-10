@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_view, NoteViewer.class, null);
+        fragmentTransaction.replace(R.id.fragment_view, new login_view());
+        fragmentTransaction.commit();
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_view, NoteViewer.class, null)
-                .commit();
+
     }
 
     public void switchToNoteEditor(String id, String title, String content, String checked){
